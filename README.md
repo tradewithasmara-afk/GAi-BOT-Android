@@ -1,36 +1,20 @@
-# GAi BOT Android — Floating Binance 8-Strategy Scanner
+# GAi BOT — 8-Strategy Signal Engine
 
-This Android project converts the existing GAi BOT Binance scanner into a native Android app with a floating overlay. The overlay can remain above Binance, screen sharing, or another app after the user grants Android's **Display over other apps** permission.
+The signal engine uses these eight strategies:
 
-## Included
-- 10-second live-candle scan button.
-- LONG/SHORT result after the scan.
-- ENTRY, TP1, TP2 and SL planning levels.
-- The same eight-strategy engine from the supplied extension:
-  1. Market Structure
-  2. Liquidity Sweep
-  3. Price Action
-  4. Volume Confirmation
-  5. Support & Resistance
-  6. Order Block
-  7. FVG
-  8. Breakout + Retest
-- Spot/Futures market selector.
-- Binance USDT coin list and live price.
-- Coin logo for the selected asset.
-- Timeframe selector.
-- Floating popup that stays visible while another app is open.
-- No Binance order placement; signals are informational/manual.
-- Original extension source preserved under `extension-original/`.
-- GitHub Actions workflow at `.github/workflows/build-apk.yml`.
+1. Market Structure — trend/direction
+2. Liquidity Sweep — liquidity grab
+3. Price Action — candle confirmation
+4. Volume Confirmation — move strength
+5. Support & Resistance — key levels
+6. Order Block — supply/demand zone
+7. FVG (Fair Value Gap) — imbalance/entry zone
+8. Breakout + Retest — breakout confirmation
 
-## Build APK on GitHub
-1. Create a GitHub repository and upload this project.
-2. Push to `main`/`master`, or open **Actions → Build GAi BOT APK → Run workflow**.
-3. Download the `GAi-BOT-debug-apk` artifact from the workflow run.
+## Signal gate
 
-## Android permissions
-The app needs Internet access for Binance public market data and **Display over other apps** for the floating popup. Keep the foreground notification enabled so Android can keep the overlay service alive.
+**UP:** bullish market structure + bullish price-action confirmation + bullish volume + a valid bullish Order Block, FVG, or Support level.
 
-## Important
-Crypto signals are not guaranteed. TP/SL values are planning levels generated from the existing strategy engine; they are not financial advice and the app does not place trades automatically.
+**DOWN:** bearish market structure + bearish price-action confirmation + bearish volume + a valid bearish Order Block, FVG, or Resistance level.
+
+Liquidity Sweep and Breakout + Retest are additional confirmations. The extension remains manual-only and does not place Binance orders.

@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "GAi BOT \u2014 Binance BTC Live Candle Scanner",
+  "version": "10.0.0",
+  "description": "Manual multi-coin live-candle scanner with eight-strategy market signal engine, coin logo/live price panel, automatic timeframe sync, live WebSocket/REST fallback, 5-second trace and 6th-second signal.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.binance.com/*",
+    "https://www.binance.bh/*",
+    "https://m.binance.com/*",
+    "https://api.binance.com/*",
+    "https://api1.binance.com/*",
+    "https://api2.binance.com/*",
+    "https://api3.binance.com/*",
+    "https://data-api.binance.vision/*",
+    "https://data-stream.binance.vision/*",
+    "https://fapi.binance.com/*",
+    "https://fstream.binance.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.binance.com/*",
+        "https://www.binance.bh/*",
+        "https://m.binance.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
